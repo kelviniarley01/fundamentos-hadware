@@ -1,24 +1,104 @@
 <!DOCTYPE html>
-<html lang="pt- BR">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Login - Projeto Integrador</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
-<body style="flex: 1; align-items: center; justify-content: center; display: flex;">
-    <div style= "background-color: rgb(186, 181, 181); width: 300px; padding: 24px; flex-direction: column; display: flex;">
-        <div style="display: flex; justify-content: center; flex-direction: column;">
-            <img src="./Logo.png" width="160" height="50" >
-            <p>Acesse o Sistema</p>
+<body>
+<div class="container">
+    <!-- Tela de Login -->
+    <div id="loginForm" class="form-container active">
+        <div class="form-header">
+            <h2>Login</h2>
+            <p>Entre com suas credenciais</p>
         </div>
-    <p>Nome</p>
-    <input type = "text" placeholder = "Ex: Kelvin Iarley">
-    <P>Email</P>
-    <input type = "email" placeholder = "Ex: email@gmail.com">
-    <p>Telefone</p>
-    <input type = "text" placeholder = "Ex: (13)99999-9999">
-        <button style="padding: 6px; background-color: rgb(8,121,22); color: white; margin-top: 12px; border-radius: 5px; border-width: 0px;">Acessar sistema</button>
 
+        <div id="loginAlert"></div>
+
+        <form id="loginFormElement">
+            <div class="form-group">
+                <label for="loginEmail">Email:</label>
+                <input type="email" id="loginEmail" required />
+            </div>
+
+            <div class="form-group">
+                <label for="loginSenha">Senha:</label>
+                <input type="password" id="loginSenha" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Entrar</button>
+            <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="showRegister()"
+            >
+                Criar Conta
+            </button>
+        </form>
     </div>
+
+    <!-- Tela de Cadastro -->
+    <div id="registerForm" class="form-container">
+        <div class="form-header">
+            <h2>Cadastro</h2>
+            <p>Crie sua conta</p>
+        </div>
+
+        <div id="registerAlert"></div>
+
+        <form id="registerFormElement">
+            <div class="form-group">
+                <label for="registerNome">Nome:</label>
+                <input type="text" id="registerNome" required />
+            </div>
+
+            <div class="form-group">
+                <label for="registerEmail">Email:</label>
+                <input type="email" id="registerEmail" required />
+            </div>
+
+            <div class="form-group">
+                <label for="registerSenha">Senha:</label>
+                <input type="password" id="registerSenha" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="showLogin()"
+            >
+                Já tenho conta
+            </button>
+        </form>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="dashboard">
+        <div class="form-header">
+            <h2>Dashboard</h2>
+            <p>Bem-vindo ao sistema!</p>
+        </div>
+
+        <div class="user-info">
+            <h3>Suas informações:</h3>
+            <div id="currentUserInfo"></div>
+        </div>
+
+        <h3>Usuários Cadastrados:</h3>
+        <div id="usersList" class="users-list">
+            <div class="loading">Carregando usuários...</div>
+        </div>
+
+        <button
+            class="btn btn-secondary"
+            onclick="logout()"
+        >Sair</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
